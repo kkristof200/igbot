@@ -4,26 +4,42 @@ from os import path
 from setuptools import find_packages, setup
 
 here = path.abspath(path.dirname(__file__))
-p_readme = path.join(here, "README.md")
 
 # Get the long description from the README file
-if path.exists(p_readme):
-    with open(p_readme, encoding="utf-8") as f:
-        long_description = f.read()
-else:
-    long_description = ''
+# with open(path.join(here, "README.md"), encoding="utf-8") as f:
+#     long_description = f.read()
 
 setup(
-    name="kfork-instabot",
-    version="0.117.2",
+    name="instabot",
+    version="0.117.0",
     description="Instagram bot scripts for promotion and API python wrapper.",
-    long_description=long_description,
+    long_description='',
     author="Daniil Okhlopkov, Evgeny Kemerov",
     author_email="danokhlopkov@gmail.com, eskemerov@gmail.com",
     license="Apache Software License 2.0",
     url="https://github.com/instagrambot/instabot",
     keywords=["instagram", "bot", "api", "wrapper"],
-    install_requires=["requests", "huepy", "rsa", "pytz", "~qdm", "schedule", "six", "responses", "requests_toolbelt", "pytest", "mock", "~ip", "moviepy", "Pillow", "pip", "pycryptodome", "pycryptodomex", "secrets", "tqdm"],
+    install_requires=[
+        "certifi>=2019.11.28",
+        "chardet>=3.0.4",
+        "future>=0.18.2",
+        "huepy>=1.2.1",
+        "idna>=2.8",
+        "pysocks>=1.7.1",
+        "pytz>=2019.3",
+        "requests>=2.22.0",
+        "requests-toolbelt>=0.9.1",
+        "responses>=0.10.9",
+        "schedule>=0.6.0",
+        "six>=1.14.0",
+        "tqdm>=4.41.1",
+        "urllib3>=1.25.7",
+        "mock>=3.0.5",
+        "moviepy>=1.0.1",
+        "Pillow>=6.2.2",
+        "pytest>=4.6.9",
+        "pycryptodome>=3.9.7",
+    ],
     classifiers=[
         # How mature is this project? Common values are
         "Development Status :: 5 - Production/Stable",
