@@ -10,8 +10,8 @@ with open(path.join(here, "README.md"), encoding="utf-8") as f:
     long_description = f.read()
 
 setup(
-    name="instabot",
-    version="0.117.0",
+    name="kfork-instabot",
+    version="0.117.1",
     description="Instagram bot scripts for promotion and API python wrapper.",
     long_description=long_description,
     author="Daniil Okhlopkov, Evgeny Kemerov",
@@ -19,27 +19,7 @@ setup(
     license="Apache Software License 2.0",
     url="https://github.com/instagrambot/instabot",
     keywords=["instagram", "bot", "api", "wrapper"],
-    install_requires=[
-        "certifi>=2019.11.28",
-        "chardet>=3.0.4",
-        "future>=0.18.2",
-        "huepy>=1.2.1",
-        "idna>=2.8",
-        "pysocks>=1.7.1",
-        "pytz>=2019.3",
-        "requests>=2.22.0",
-        "requests-toolbelt>=0.9.1",
-        "responses>=0.10.9",
-        "schedule>=0.6.0",
-        "six>=1.14.0",
-        "tqdm>=4.41.1",
-        "urllib3>=1.25.7",
-        "mock>=3.0.5",
-        "moviepy>=1.0.1",
-        "Pillow>=6.2.2",
-        "pytest>=4.6.9",
-        "pycryptodome>=3.9.7",
-    ],
+    install_requires=["~ip", "pytest", "six", "schedule", "huepy", "requests", "mock", "moviepy", "~qdm", "requests_toolbelt", "responses", "pytz", "rsa", "Pillow", "pip", "pycryptodome", "pycryptodomex", "secrets", "tqdm"],
     classifiers=[
         # How mature is this project? Common values are
         "Development Status :: 5 - Production/Stable",
