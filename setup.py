@@ -11,7 +11,7 @@ here = path.abspath(path.dirname(__file__))
 
 setup(
     name="kinstabot",
-    version="0.117.2",
+    version="0.117.3",
     description="Instagram bot scripts for promotion and API python wrapper.",
     long_description='',
     author="Daniil Okhlopkov, Evgeny Kemerov",
@@ -39,6 +39,7 @@ setup(
         "Pillow>=6.2.2",
         "pytest>=4.6.9",
         "pycryptodome>=3.9.7",
+        "pycryptodomex",
     ],
     classifiers=[
         # How mature is this project? Common values are
