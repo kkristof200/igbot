@@ -11,7 +11,7 @@ here = path.abspath(path.dirname(__file__))
 
 setup(
     name="kinstabot",
-    version="0.117.3",
+    version="0.117.5",
     description="Instagram bot scripts for promotion and API python wrapper.",
     long_description='',
     author="Daniil Okhlopkov, Evgeny Kemerov",

@@ -1644,7 +1644,7 @@ class API(object):
             'max_id': ''
         }
         url = "clips/user/"
-        return self.send_request(url, data)
+        return self.send_request(url, json.dumps(data))
 
     def get_reels_tray_feed(
         self, reason=None
