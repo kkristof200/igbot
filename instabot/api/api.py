@@ -1637,6 +1637,15 @@ class API(object):
         url = "feed/user/{}/reel_media/".format(user_id)
         return self.send_request(url)
 
+    def get_user_clips(self, user_id):
+        data = {
+            'target_user_id': user_id,
+            'page_size': 12,
+            'max_id': ''
+        }
+        url = "clips/user/"
+        return self.send_request(url, data)
+
     def get_reels_tray_feed(
         self, reason=None
     ):  # reason can be = cold_start or pull_to_refresh

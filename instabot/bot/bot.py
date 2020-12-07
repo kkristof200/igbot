@@ -89,6 +89,7 @@ from .bot_get import (
     get_your_medias,
     search_users,
     get_muted_friends,
+    get_user_clips,
 )
 from .bot_like import (
     like,
@@ -531,6 +532,9 @@ class Bot(object):
 
     def get_user_reel(self, user_id):
         return get_user_reel(self, user_id)
+
+    def get_user_clips(self, user_id):
+        return get_user_clips(self, user_id)
 
     def get_self_story_viewers(self, story_id):
         return get_self_story_viewers(self, story_id)

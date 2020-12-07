@@ -38,6 +38,9 @@ def get_user_reel(self, user_id):
     self.api.get_user_reel(user_id)
     return self.api.last_json
 
+def get_user_clips(self, user_id):
+    self.api.get_user_clips(user_id)
+    return self.api.last_json
 
 def get_media_owner(self, media_id):
     self.api.media_info(media_id)
