@@ -34,6 +34,10 @@ def get_self_story_viewers(self, story_id):
     return self.api.last_json
 
 
+def get_user_related_profiles(self, user_id):
+    self.api.get_user_related_profiles(user_id)
+    return self.api.last_json
+
 def get_user_reel(self, user_id):
     self.api.get_user_reel(user_id)
     return self.api.last_json

@@ -90,6 +90,7 @@ from .bot_get import (
     search_users,
     get_muted_friends,
     get_user_clips,
+    get_user_related_profiles,
 )
 from .bot_like import (
     like,
@@ -529,6 +530,10 @@ class Bot(object):
         Returns array of stories links
         """
         return get_user_stories(self, user_id)
+
+
+    def get_user_related_profiles(self, user_id):
+        return get_user_related_profiles(self, user_id)
 
     def get_user_reel(self, user_id):
         return get_user_reel(self, user_id)

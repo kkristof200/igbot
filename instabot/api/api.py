@@ -503,13 +503,14 @@ class API(object):
 
     def send_request(
         self,
-        endpoint,
+        endpoint=None,
         post=None,
         login=False,
         with_signature=True,
         headers=None,
         extra_sig=None,
         timeout_minutes=None,
+        url=None
     ):
         self.set_proxy()  # Only happens if `self.proxy`
         # TODO: fix the request_headers
@@ -536,7 +537,7 @@ class API(object):
                 response = self.session.post(config.API_URL + endpoint, data=post)
             else:  # GET
                 # time.sleep(random.randint(1, 2))
-                response = self.session.get(config.API_URL + endpoint)
+                response = self.session.get(url if url else config.API_URL + endpoint)
         except Exception as e:
             self.logger.warning(str(e))
             return False
@@ -1631,6 +1632,34 @@ class API(object):
             "&query={query}&lat={lat}&lng={lng}"
         )
         url = url.format(rank_token=self.rank_token, query=query, lat=lat, lng=lng)
+        return self.send_request(url)
+    
+    def get_user_related_profiles(self, user_id):
+        query = json.dumps({
+            'user_id': user_id,
+            "include_chaining": True,
+            "include_reel": False,
+            "include_suggested_users": True,
+            "include_logged_out_extras": False,
+            "include_highlight_reels": False,
+            "include_live_status": True
+        })
+
+        url = 'https://www.instagram.com/graphql/query/?query_hash={}&variables={}'.format(
+            hmac.new(config.IG_SIG_KEY.encode("utf-8"), query.encode("utf-8"), hashlib.md5).hexdigest(),
+            query
+        )
+
+#         hmac_md5 = hmac.new(config.IG_SIG_KEY.encode("utf-8"), query.encode("utf-8"), hashlib.md5).hexdigest(),
+#         hmac_1   = hmac.new(config.IG_SIG_KEY.encode("utf-8"), query.encode("utf-8"), hashlib.sha1).hexdigest(),
+#         hmac_224 = hmac.new(config.IG_SIG_KEY.encode("utf-8"), query.encode("utf-8"), hashlib.sha224).hexdigest(),
+#         hmac_256 = hmac.new(config.IG_SIG_KEY.encode("utf-8"), query.encode("utf-8"), hashlib.sha256).hexdigest(),
+#         hmac_384 = hmac.new(config.IG_SIG_KEY.encode("utf-8"), query.encode("utf-8"), hashlib.sha384).hexdigest(),
+#         hmac_512 = hmac.new(config.IG_SIG_KEY.encode("utf-8"), query.encode("utf-8"), hashlib.sha512).hexdigest(),
+
+# # d4d88dc1500312af6f937f7b804c68c3
+# 'ba9b110a8deb0b506ebb10cd5ddcae6d52663d43'
+# 'e6ec8563761ff2341cb036de747aa245'
         return self.send_request(url)
 
     def get_user_reel(self, user_id):
